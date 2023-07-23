@@ -14,3 +14,21 @@
 }
 
 .mdc-notched-outline{border-color: #fff !important;}
+.bg-img-1{
+    height: 250px;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.flag{
+    position: absolute;
+    z-index: 2;
+    background: #fff;
+    top: 40%;
+    right: 0;
+    padding: 8px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    color: red;
+    font-weight: 500;
+}
