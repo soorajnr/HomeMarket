@@ -1,0 +1,16 @@
+.banner{
+    background: url(../../assets/img/banner1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+  
+}
+.overlay{background: #000f2580; width: 100%; height: 100%; }
+.home{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.mdc-notched-outline{border-color: #fff !important;}

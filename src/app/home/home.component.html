@@ -1,0 +1,47 @@
+<section>
+    <div class="container-fluid">
+        <div class="row banner">
+            <div class=" overlay d-flex align-items-center h-100">
+                <div class="home">
+                   <mat-form-field class="col-12">
+                            <mat-label>Location</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let Location of Location" [value]="Location.value">
+                                {{Location.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                </div>
+                
+                <div class="col-sm-5 m-auto">
+                    <h1 class="m-auto text-white text-bold text-left mb-4">You can buy Near your homely items you want. <br> Like Bartter system.</h1>
+                    
+                    <div class="d-flex">
+                        <mat-form-field class="col-4">
+                            <mat-label>Catagery</mat-label>
+                            <mat-select>
+                              <mat-option *ngFor="let Catagery of Catagery" [value]="Catagery.value">
+                                {{Catagery.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        <mat-form-field class="col-8">
+                            <mat-label>Search</mat-label>
+                            <input matInput placeholder="Ex. Pachamulak">
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                    </div>
+                   
+                </div>
+               
+            </div>
+          
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <h3 class="mb-1 text-primary"><mat-icon>location_on</mat-icon> Thrissur - Varatharapilly</h3>
+                <h1>Vegetables & Fruits Near you</h1>
+            </div>
+        </div>
+    </div>
+</section>
