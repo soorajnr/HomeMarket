@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
 import { OTPComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { LocationComponent } from './location/location.component';
-import { HomeComponent } from './home/home.component';
+//import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     OTPComponent,
     LocationComponent,
-    HomeComponent
+   // HomeComponent
   ],
   imports: [
     BrowserModule,
