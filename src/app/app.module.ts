@@ -13,6 +13,7 @@ import { LocationComponent } from './location/location.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+//import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     OTPComponent,
     LocationComponent,
-    HomeComponent
+   // HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,8 @@ import { LoginComponent } from './login/login.component';
 import { OTPComponent } from './otp/otp.component';
 import { LocationComponent } from './location/location.component';
 import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
+//import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [];
 
@@ -14,7 +16,9 @@ const routes: Routes = [];
        { path: 'otp', component: OTPComponent },
        { path: 'location', component: LocationComponent },
        { path: 'home', component: HomeComponent },
-      { path: '**', redirectTo: 'login' }
+       { path: 'details/:id', component: DetailsComponent },
+       //{ path: 'home', component: HomeComponent },
+       { path: '**', redirectTo: 'login' }
     ])
   ],
   exports: [RouterModule]
