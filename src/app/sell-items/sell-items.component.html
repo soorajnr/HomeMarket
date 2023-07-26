@@ -1,0 +1,96 @@
+
+<section class="bg-light">
+    <div class="container-fluid">
+        <div class="row banner">
+            <div class=" overlay d-flex align-items-center justify-content-center h-100">
+            <h1 class="text-white text-center mb-0">Sell Your Products</h1>               
+            </div>
+        </div>
+        <div class="container">
+            <div class="row mt-5">
+                <h2>Product Details</h2>
+                <div class="col-sm-6 mb-3">
+                    <div class="row">
+                        <div class=" col-sm-6">
+                            <mat-form-field appearance="outline" class="col-12">
+                                <mat-label>Item Name</mat-label>
+                                <input matInput placeholder="Item Name">
+                            </mat-form-field>
+                        </div>
+                        <div class=" col-sm-6">
+                            <mat-form-field appearance="outline" class="col-12">
+                                <mat-label>Catogery</mat-label>
+                                <mat-select>
+                                  <mat-option *ngFor="let Catogery of Catogeries" [value]="Catogery.value">
+                                    {{Catogery.viewValue}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class=" col-sm-6">                 
+                        <mat-form-field appearance="outline" class="col-12">
+                            <mat-label>Price</mat-label>
+                            <input matInput placeholder="Price">
+                          </mat-form-field>
+
+                  </div>
+                  <div class=" col-sm-6 pb-3">
+                    <mat-radio-group aria-label="Select an option" >
+                        <mat-radio-button value="1">Negotiable</mat-radio-button>
+                        <mat-radio-button value="2">Fixed Price</mat-radio-button>
+                      </mat-radio-group>
+                  </div>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="col-12">
+                        <mat-label>Item Description</mat-label>
+                        <input matInput placeholder="Item Description">
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field appearance="outline" class="col-12">
+                        <mat-label>Location</mat-label>
+                        <input matInput placeholder="Location">
+                        <mat-icon matSuffix color="primary">location_on</mat-icon>
+                    </mat-form-field>
+                  </div>
+                  
+                  <div>
+                    <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save</button>
+                  </div>
+                </div>
+                <div class="col-sm-6 mb-3">
+                    <div class="upload-img" style="background: url(https://dummyimage.com/600x300/ccc/999);">
+                        <div class="overlay-upload">
+                            <mat-icon>photo_camera</mat-icon>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        </div>
+        </section>
+
+
+ 

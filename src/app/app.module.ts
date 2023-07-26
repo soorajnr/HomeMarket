@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { OTPComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { LocationComponent } from './location/location.component';
+import { SellItemsComponent } from './sell-items/sell-items.component';
 //import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { LocationComponent } from './location/location.component';
     LoginComponent,
     OTPComponent,
     LocationComponent,
+    SellItemsComponent
    // HomeComponent
   ],
   imports: [
