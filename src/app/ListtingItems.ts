@@ -1,12 +1,14 @@
 export interface ListtingItems {
-  id: number;
+  id:number;
+
+  date_added: number;
+  description:string
+  category: number;
+  location: string;
   name: string;
-  city: string;
-  state: string;
-  price: number;
-  Negotiable: string;
   photo: string;
-  availableUnits: number;
-  wifi: boolean;
-  laundry: boolean;
+  price: string;
+  price_cat: string;
+  quantity: number;
+  seller: number;
 }
