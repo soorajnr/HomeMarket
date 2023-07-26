@@ -18,14 +18,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
         alt="Exterior photo of {{ListtingItems?.name}}"/>
       <section class="listing-description">
         <h2 class="listing-heading">{{ListtingItems?.name}}</h2>
-        <p class="listing-location">{{ListtingItems?.city}}, {{ListtingItems?.state}}</p>
+        <h2 class="listing-heading">{{ListtingItems?.name}}</h2>
+
+        <!-- <p class="listing-location">{{ListtingItems?.city}}, {{ListtingItems?.state}}</p> -->
       </section>
       <section class="listing-features">
         <h2 class="section-heading">About this housing location</h2>
         <ul>
-          <li>Units available: {{ListtingItems?.availableUnits}}</li>
-          <li>Does this location have wifi: {{ListtingItems?.wifi}}</li>
-          <li>Does this location have laundry: {{ListtingItems?.laundry}}</li>
+          <!-- <li>Units available: {{ListtingItems?.availableUnits}}</li> -->
+          <!-- <li>Does this location have wifi: {{ListtingItems?.wifi}}</li> -->
+          <!-- <li>Does this location have laundry: {{ListtingItems?.laundry}}</li> -->
         </ul>
       </section>
       <section class="listing-apply">

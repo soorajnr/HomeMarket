@@ -1,13 +1,19 @@
 
 <section class="d-flex align-items-center h-100 w-100">   
-        <form class="row col-sm col-lg-5 m-auto ">    
+        <form [formGroup]="myForm" class="row col-sm col-lg-5 m-auto ">    
             <mat-form-field appearance="fill">
                 <mat-label>Enter your Phone number</mat-label>
-                <input matInput placeholder="+91">
+                <input  formControlName="mobile" matInput placeholder="+91">
                 <mat-icon matSuffix>phone</mat-icon>
             </mat-form-field> 
             <div>
             <button mat-raised-button color="accent" type="button" (click)="GoOtp()">Send <mat-icon>send</mat-icon></button>
             </div>
+
+          
         </form>
+
+    
+
+        
 </section>
