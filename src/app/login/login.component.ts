@@ -45,6 +45,6 @@ export class LoginComponent implements OnInit {
           console.error('Error sending data to server:', error);
         });
     }
-    //this.router.navigate(['/', 'otp']);
+    this.router.navigate(['/', 'otp']);
   }
 }
