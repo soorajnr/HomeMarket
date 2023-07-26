@@ -5,6 +5,7 @@ import { OTPComponent } from './otp/otp.component';
 import { LocationComponent } from './location/location.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
+import { SellItemsComponent } from './sell-items/sell-items.component';
 //import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [];
@@ -17,6 +18,7 @@ const routes: Routes = [];
        { path: 'location', component: LocationComponent },
        { path: 'home', component: HomeComponent },
        { path: 'details/:id', component: DetailsComponent },
+       { path: 'sellitem', component: SellItemsComponent },
        //{ path: 'home', component: HomeComponent },
        { path: '**', redirectTo: 'login' }
     ])
