@@ -24,3 +24,10 @@ button{height: 45px !important;}
    border-right: 1px solid #ccc;
   }
 }
+
+.ng-otp-input-wrapper{
+  display: flex !important;
+  .otp-input{
+    flex-grow: 1;
+  }
+}

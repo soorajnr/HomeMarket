@@ -3,3 +3,7 @@ section{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.height-set{
+    height: calc(100vh - 200px);
+    justify-content: center;
+}
