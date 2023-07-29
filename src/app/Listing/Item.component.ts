@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 
 @Component({
-  selector: 'app-housing-location',
+  selector: 'app-items',
   standalone: true,
   imports: [
     CommonModule,
