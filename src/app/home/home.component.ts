@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.listingService.getProduct().subscribe(
       (data: ListtingItems[]) => {
-        debugger;
+        
         this.ListtingItemsList = data;
         this.isItemsAvailable = true; // Set the flag to true when items are available
       },

@@ -153,7 +153,7 @@ export class ListingService {
   getProduct(): Observable<ListtingItems[]> {
     
     return this.http.get<ListtingItems[]>('http://127.0.0.1:8000/product/allproduct/');
-    debugger;
+    
   }
 
   getAllListtingItems(): ListtingItems[] {

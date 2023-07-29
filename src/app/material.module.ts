@@ -8,6 +8,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatStepperModule} from '@angular/material/stepper';
+
+
 @NgModule({
   declarations: [],
   imports: [
@@ -18,7 +21,9 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatStepperModule,
+    
   ],
 
   exports: [
@@ -29,7 +34,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatButtonModule,
     MatSelectModule,
     MatCardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatStepperModule
   ],
 })
 export class MaterialModule { }
