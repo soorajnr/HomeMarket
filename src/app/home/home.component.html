@@ -43,20 +43,36 @@
         </div>
 
         <div class="container">
-            <div class="mt-5 d-flex justify-content-between">
-              <div>
-                <h3 class="mb-1 text-primary"><mat-icon>location_on</mat-icon> Thrissur - Varatharapilly</h3>
-                <h1>Vegetables & Fruits Near you</h1>
-              </div>
-              <div>
-                <button mat-stroked-button color="primary">More Items</button>
-              </div>
-            </div>
+           
            <div class="row">
-                <app-housing-location class="col-sm col-sm-3 mb-5" 
-                *ngFor="let ListtingItems of ListtingItemsList"
-                [ListtingItems]="ListtingItems">
-              </app-housing-location>
+              
+
+              <ng-container *ngFor="let categoryGroup of categorizedItems | keyvalue">
+                <!-- Display category name -->
+                <div class="mt-5 d-flex justify-content-between">
+                  <div>                   
+                    <h2 class="mb-1"> {{ categoryGroup.key }} Near you</h2>
+                    <h3 class="text-primary">Thrissur - Varatharapilly</h3>
+                  </div>
+                  <div>
+                    <button mat-stroked-button color="primary">More Items</button>
+                  </div>
+                </div>              
+              
+                <!-- Loop through items in the category and display their details -->
+                <div *ngFor="let item of categoryGroup.value" class="col-sm col-sm-3 mb-5">
+                  <mat-card class="example-card">
+                    <div mat-card-image class="bg-img-1"  style="background: url({{item.photo}});"></div>              
+                    <mat-card-content class="mx-2">
+                      <h2 class="mb-1 mt-3 text-truncate">{{ item.name }}</h2>
+                    </mat-card-content>
+                    <mat-card-actions class="m-3 d-flex justify-content-between">
+                      <button mat-raised-button color="primary" [routerLink]="['/details', item.id]">Buy Now</button>
+                      <button mat-button color="warn"><h2 class="mb-0">Rs. {{ item.price }}</h2></button>
+                    </mat-card-actions>
+                  </mat-card>
+                </div>
+              </ng-container>
           </div>
             
          
