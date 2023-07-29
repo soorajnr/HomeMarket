@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { MaterialModule } from './material.module';
-import { OTPComponent } from './otp/otp.component';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { LocationComponent } from './location/location.component';
 import { SellItemsComponent } from './sell-items/sell-items.component';
@@ -20,9 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     LoginComponent,
-    OTPComponent,
     LocationComponent,
-    SellItemsComponent
+    SellItemsComponent,
    // HomeComponent
   ],
   imports: [

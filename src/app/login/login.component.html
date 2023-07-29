@@ -1,4 +1,4 @@
-
+<!-- 
 <section class="d-flex align-items-center h-100 w-100">   
         <form [formGroup]="myForm" class="row col-sm col-lg-5 m-auto ">    
             <mat-form-field appearance="fill">
@@ -16,4 +16,82 @@
     
 
         
+</section> -->
+<section class="d-flex align-items-center h-100 w-100">  
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+  </button> -->
+  <mat-stepper [linear]="isLinear" #stepper class="w-100 h-100 bg-transparent">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <div class="d-flex align-items-center height-set flex-column">
+        <ng-template matStepLabel ><span class="text-white"> Fill out your name</span></ng-template>
+        <div class="col-sm-5 col-12">
+            <h2 class="text-white ">Enter Phone Number</h2>
+        <mat-form-field class="col-12">
+          <mat-label>Phone Number</mat-label>
+          <input matInput placeholder="Last name, First name" formControlName="mobile" required >
+        </mat-form-field>
+        <div class="d-flex justify-content-end">
+          <button mat-raised-button color="accent" (click)="GoOtp(stepper)">Next <mat-icon>send</mat-icon></button>
+        </div>
+    </div>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel ><span class="text-white"> Enter OTP</span></ng-template>
+      <form [formGroup]="secondFormGroup">
+        <div class="d-flex align-items-center height-set flex-column">
+            <ng-template matStepLabel ><span class="text-white"> Fill out your name</span></ng-template>
+            <div class="col-sm-3 col-12">
+                <h2 class="text-white ">Enter OTP</h2>
+                <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:5}"></ng-otp-input>
+                  <div class="d-flex justify-content-end mt-2">
+                    <div>
+                        <button mat-raised-button color="accent" (click)="goBack(stepper)" class="me-2">Back</button>
+                        <button mat-raised-button color="primary" (click)="GoUserCheck(stepper)">Next</button> 
+                    </div>            
+                </div>
+            </div>
+            
+        </div>
+      
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="ThirdFormGroup">
+        <ng-template matStepLabel ><span class="text-white"> Enter Location</span></ng-template>
+      <form [formGroup]="ThirdFormGroup">
+        <div class="d-flex align-items-center height-set flex-column">
+            <div class="col-sm-5 col-12">
+                <!-- <div class="d-flex justify-content-center flex-column align-items-center">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="70" />
+                    <h1 class="text-white mt-3">Sooraj N R</h1>
+                 </div> -->
+                <h2 class="text-white ">Enter Your Name</h2>
+                <mat-form-field class="col-12">
+                    <mat-label>Enter User Name</mat-label>
+                    <input matInput formControlName="ThirdCtrl" placeholder="0000"
+                        required>
+                </mat-form-field>
+                <div class="d-flex justify-content-end">
+                    <div>
+                        <button mat-raised-button color="accent" (click)="goBack(stepper)" class="me-2">Back</button>
+                        <button mat-raised-button color="primary" (click)="goToHome(stepper)">Next</button> 
+                    </div>            
+                </div>
+            </div>
+        </div>
+      </form>
+    </mat-step>
+    <!-- <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button (click)="goBack(stepper)">Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step> -->
+  </mat-stepper>
+
 </section>
