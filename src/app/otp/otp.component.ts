@@ -16,7 +16,7 @@ export class OTPComponent {
   @ViewChild('ngOtpInput', { static: false}) ngOtpInput: any;
   config = {
     allowNumbersOnly: false,
-    length: 5,
+    length: 4,
     isPasswordInput: false,
     disableAutoFocus: false,
     placeholder: '-',
@@ -27,6 +27,7 @@ export class OTPComponent {
   };
   onOtpChange(otp:any) {
     this.otp = otp;
+    console.log(otp);
   }
 
   setVal(val:any) {

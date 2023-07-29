@@ -7,6 +7,7 @@
             </div>
         </div>
         <div class="container">
+        <form [formGroup]="ProductForm">
             <div class="row mt-5">
                 <h2>Product Details</h2>
                 <div class="col-sm-6 mb-3">
@@ -14,17 +15,27 @@
                         <div class=" col-sm-6">
                             <mat-form-field appearance="outline" class="col-12">
                                 <mat-label>Item Name</mat-label>
-                                <input matInput placeholder="Item Name">
+                                <input formControlName="name" matInput placeholder="Item Name">
                             </mat-form-field>
                         </div>
                         <div class=" col-sm-6">
                             <mat-form-field appearance="outline" class="col-12">
                                 <mat-label>Catogery</mat-label>
-                                <mat-select>
-                                  <mat-option *ngFor="let Catogery of Catogeries" [value]="Catogery.value">
-                                    {{Catogery.viewValue}}
-                                  </mat-option>
-                                </mat-select>
+                                <mat-select formControlName="category">
+                                    <mat-option *ngFor="let category of Catogeries" [value]="category.id">
+                                      {{ category.category }}
+                                    </mat-option>
+                                  </mat-select>
+                              </mat-form-field>
+                        </div>
+                        <div class=" col-sm-6">
+                            <mat-form-field appearance="outline" class="col-12">
+                                <mat-label>Seller</mat-label>
+                                <mat-select formControlName="seller">
+                                    <mat-option *ngFor="let seller of Users" [value]="seller.id">
+                                      {{ seller.name }}
+                                    </mat-option>
+                                  </mat-select>
                               </mat-form-field>
                         </div>
                     </div>
@@ -32,7 +43,7 @@
                     <div class=" col-sm-6">                 
                         <mat-form-field appearance="outline" class="col-12">
                             <mat-label>Price</mat-label>
-                            <input matInput placeholder="Price">
+                            <input  formControlName="price" matInput placeholder="Price">
                           </mat-form-field>
 
                   </div>
@@ -46,19 +57,19 @@
                   <div>
                     <mat-form-field appearance="outline" class="col-12">
                         <mat-label>Item Description</mat-label>
-                        <input matInput placeholder="Item Description">
+                        <input  formControlName="description"  matInput placeholder="Item Description">
                     </mat-form-field>
                   </div>
                   <div>
                     <mat-form-field appearance="outline" class="col-12">
                         <mat-label>Location</mat-label>
-                        <input matInput placeholder="Location">
+                        <input formControlName="location" matInput placeholder="Location">
                         <mat-icon matSuffix color="primary">location_on</mat-icon>
                     </mat-form-field>
                   </div>
                   
                   <div>
-                    <button mat-raised-button color="primary"><mat-icon>save</mat-icon> Save</button>
+                    <button mat-raised-button color="primary" (click)="saveProduct()"><mat-icon>save</mat-icon> Save</button>
                   </div>
                 </div>
                 <div class="col-sm-6 mb-3">
@@ -87,6 +98,7 @@
                     </div>
                 </div>
             </div>
+        </form>
         </div>
         
         </div>
