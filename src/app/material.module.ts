@@ -9,7 +9,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatStepperModule} from '@angular/material/stepper';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [],
@@ -23,6 +25,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatCardModule,
     MatRadioModule,
     MatStepperModule,
+    MatProgressBarModule,
+    MatGridListModule,
+    MatToolbarModule
     
   ],
 
@@ -35,7 +40,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSelectModule,
     MatCardModule,
     MatRadioModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule,
+    MatGridListModule,
+    MatToolbarModule
   ],
 })
 export class MaterialModule { }
