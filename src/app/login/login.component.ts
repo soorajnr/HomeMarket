@@ -58,10 +58,12 @@ export class LoginComponent implements OnInit {
   };
   onOtpChange(otp:any) {
     this.otp = otp;
+  
   }
 
   setVal(val:any) {
     this.ngOtpInput.setValue(val);
+    console.log(val);
   }
 
   toggleDisable(){
@@ -94,7 +96,7 @@ goForward(stepper: MatStepper){
     if (this.firstFormGroup.valid) {
       const mobile = this.firstFormGroup.get( 'mobile')!.value;
       console.log('Mobile Number:', mobile);
-      this.http.post('http://127.0.0.1:8000/api/userdata/', { name:"siva",mobile: mobile })
+      this.http.post('http://127.0.0.1:8000/api/userdata/', { mobile: mobile })
         .subscribe((response: any) => {          
           this.userVar=response.user;
           console.log('Response from server:', response);    
@@ -109,6 +111,21 @@ goForward(stepper: MatStepper){
 
   GoUserCheck(stepper: MatStepper){
     this.validUser = localStorage.getItem('IsValidUser');
+    if (this.secondFormGroup.valid) {
+    const url = 'http://127.0.0.1:8000/api/verifyotp/';
+    const body = { entered_otp: this.otp };
+
+    this.http.post(url, body,{ withCredentials: true }).subscribe(
+      (response) => {
+        // Handle successful response
+        console.log(response);
+      },
+      (error) => {
+        // Handle error response
+        console.error(error);
+      }
+    );
+    }
     if(this.validUser == "true") {
       this.router.navigate(['/', 'home']);
     }
