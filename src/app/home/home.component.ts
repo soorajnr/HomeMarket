@@ -1,10 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListtingItemsComponent } from '../Listing/Item.component';
 import { ListtingItems } from '../ListtingItems';
 import { ListingService } from '../Listing.service';
 import { MaterialModule } from '../material.module';
 import { OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 interface Location {
   value: string;
   viewValue: string;
@@ -14,8 +14,8 @@ interface Location {
   standalone: true,
   imports: [
     CommonModule,
-    ListtingItemsComponent,
-    MaterialModule
+    MaterialModule,
+    RouterModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
@@ -48,19 +48,21 @@ interface Location {
 
 // }
 export class HomeComponent implements OnInit {
+ // @Input() item!: ListtingItems;
   selected = 'thrissur-0';
   ListtingItemsList: ListtingItems[] = [];
+  categorizedItems: { [category: number]: ListtingItems[] } = {};
   isItemsAvailable: boolean = false;
   housingService: ListingService = inject(ListingService);
-  filteredLocationList: ListtingItems[] = [];
+  //filteredLocationList: ListtingItems[] = [];
   constructor(private listingService: ListingService) { }
 
   ngOnInit() {
     this.listingService.getProduct().subscribe(
       (data: ListtingItems[]) => {
-        
         this.ListtingItemsList = data;
-        this.isItemsAvailable = true; // Set the flag to true when items are available
+        this.isItemsAvailable = true; 
+        this.groupCategories();
       },
       (error) => {
         console.error('Error fetching data:', error);
@@ -68,12 +70,24 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  groupCategories() {
+    debugger;
+    this.categorizedItems = {}; // Reset the categorizedItems object
+    this.ListtingItemsList.forEach((item) => {
+      if (!this.categorizedItems[item.category]) {
+        this.categorizedItems[item.category] = [];
+      }
+      this.categorizedItems[item.category].push(item);
+    });
+  }
+
     filterResults(text: string) {
     if (!text) {
-      this.filteredLocationList = this.ListtingItemsList;
+      this.ListtingItemsList = this.ListtingItemsList;
     }
 
-    this.filteredLocationList = this.ListtingItemsList.filter(
+    this.ListtingItemsList = this.ListtingItemsList.filter(
       ListtingItems => ListtingItems?.name.toLowerCase().includes(text.toLowerCase())
     );
   }
