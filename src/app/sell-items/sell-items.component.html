@@ -6,6 +6,12 @@
             <h1 class="text-white text-center mb-0">Sell Your Products</h1>               
             </div>
         </div>
+        <div class="menus">
+            <button  mat-raised-button routerLink="/home"><mat-icon>home</mat-icon> Home</button>            
+            <button  mat-raised-button><mat-icon>storefront</mat-icon> Sell </button>
+            <button  mat-raised-button><mat-icon>shopping_bag</mat-icon> Buy </button>
+            <button  mat-raised-button><mat-icon>person</mat-icon> Profile</button>
+        </div>
         <div class="container">
         <form [formGroup]="ProductForm">
             <div class="row mt-5">
@@ -67,32 +73,49 @@
                         <mat-icon matSuffix color="primary">location_on</mat-icon>
                     </mat-form-field>
                   </div>
-                  
+                 
+                  <div>
+                    <mat-form-field  appearance="outline" class="col-12">
+                        <div>
+                          <mat-toolbar>
+                            <!-- Display files names -->
+                            <input matInput [value]="fileAttr" readonly name="name" />
+                            <!-- Browse Button -->
+                            <button mat-flat-button color="primary">Browse File</button>
+                          </mat-toolbar>
+                          <!-- Fetch selected filed on change -->
+                          <input
+                            type="file"
+                            #fileInput
+                            id="uploadFile"
+                            formControlName="photo"
+                            (change)="uploadFileEvt($event)"
+                            name="uploadFile"
+                            multiple="multiple"
+                            accept="image/*"
+                          />
+                        </div>
+                      </mat-form-field>
+                  </div>
                   <div>
                     <button mat-raised-button color="primary" (click)="saveProduct()"><mat-icon>save</mat-icon> Save</button>
                   </div>
                 </div>
-                <div class="col-sm-6 mb-3">
-                    <div class="upload-img" style="background: url(https://dummyimage.com/600x300/ccc/999);">
-                        <div class="overlay-upload">
-                            <mat-icon>photo_camera</mat-icon>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-3">
-                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                
+                <div class="col-sm-6 col-12 mb-3">
+                    <div class="row row-cols-3">
+                        <div class="upload-img col col-sm mb-2" *ngFor="let url of urls">                        
+                            <div class="upload-img" [ngStyle]="{'background': 'url(' + url + ') no-repeat 0 0 / cover'}">
+                                <div class="overlay-upload">
+                                    <mat-icon>photo_camera</mat-icon>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-3">
-                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="upload-img-1 " style="background: url(https://dummyimage.com/100x80/ccc/999);">                           
+                        <div class="upload-img col-12 col-sm-12 mb-2" *ngIf="fileAttr == 'Choose Images'">                        
+                            <div class="upload-img" style="background: url(https://dummyimage.com/ccc/999); height: 250px;">
+                                <div class="overlay-upload">
+                                    <mat-icon>photo_camera</mat-icon>
+                                </div>
                             </div>
                         </div>
                     </div>
