@@ -13,7 +13,7 @@
     top: 10px;
   }
   .upload-img{
-    height: 300px;
+    height: 100px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -42,3 +42,47 @@
     background-size: cover;
     border-radius: 10px;
   }
+
+  // https://dummyimage.com/100x80/ccc/999
+
+//   .mat-mdc-form-field {
+//     margin: 40px 0;
+//     width: 500px !important;
+// }
+// .mat-toolbar-single-row {
+//     height: auto !important;
+//     background: transparent;
+// }
+.mat-toolbar-single-row button {
+    width: 200px;
+}
+// .mat-form-field {
+//     width: 100%;
+// }
+#uploadFile {
+    top: 0px;
+    left: 0px;
+    width: 100%;    
+    z-index: 9;
+    opacity: 0;
+    height: 100%;
+    cursor: pointer;
+    position: absolute;
+}
+.menus{
+    display: flex ;
+    margin-top: -40px !important;
+    max-width: 400px;
+    margin: 0 auto;
+    button{
+      flex-grow: 1;
+      margin: 6px;
+      height: 70px !important;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      mat-icon{
+        margin-right: 0 !important;
+      }
+    }
+}

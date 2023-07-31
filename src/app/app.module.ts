@@ -11,8 +11,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { LocationComponent } from './location/location.component';
 import { SellItemsComponent } from './sell-items/sell-items.component';
 import { HomeComponent } from './home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -31,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgOtpInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule // <============ Don't forget to call 'forRoot()'!
   ],
   providers: [],
   bootstrap: [AppComponent]
