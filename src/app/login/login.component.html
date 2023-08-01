@@ -33,7 +33,7 @@
           <input matInput placeholder="Last name, First name" formControlName="mobile" required >
         </mat-form-field>
         <div class="d-flex justify-content-end">
-          <button mat-raised-button color="accent" (click)="GoOtp(stepper)">Next <mat-icon>send</mat-icon></button>
+          <button mat-raised-button color="accent" (click)="GoOtp()">Next <mat-icon>send</mat-icon></button>
         </div>
     </div>
         </div>
@@ -50,8 +50,8 @@
                 <ng-otp-input  (onInputChange)="onOtpChange($event)"  [config]="{length:5}"></ng-otp-input>
                   <div class="d-flex justify-content-end mt-2">
                     <div>
-                        <button mat-raised-button color="accent" (click)="goBack(stepper)" class="me-2">Back</button>
-                        <button mat-raised-button color="primary" (click)="GoUserCheck(stepper)">Next</button> 
+                        <button mat-raised-button color="accent" (click)="goBack()" class="me-2">Back</button>
+                        <button mat-raised-button color="primary" (click)="GoUserCheck()">Next</button> 
                     </div>            
                 </div>
             </div>
@@ -77,8 +77,8 @@
                 </mat-form-field>
                 <div class="d-flex justify-content-end">
                     <div>
-                        <button mat-raised-button color="accent" (click)="goBack(stepper)" class="me-2">Back</button>
-                        <button mat-raised-button color="primary" (click)="goToHome(stepper)">Next</button> 
+                        <button mat-raised-button color="accent" (click)="goBack()" class="me-2">Back</button>
+                        <button mat-raised-button color="primary" (click)="goToHome()">Next</button> 
                     </div>            
                 </div>
             </div>

@@ -12,7 +12,7 @@ import { LocationComponent } from './location/location.component';
 import { SellItemsComponent } from './sell-items/sell-items.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ToastrModule } from 'ngx-toastr';
 //import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     LocationComponent,
-    SellItemsComponent,
+    SellItemsComponent
    // HomeComponent
   ],
   imports: [
@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NgOtpInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
