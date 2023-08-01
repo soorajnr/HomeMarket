@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface User {
@@ -90,6 +90,7 @@ export class SellItemsComponent implements OnInit {
       // const quantity = this.ProductForm.get( 'quantity',)!.value;
       const category = this.ProductForm.get( 'category',)!.value;
       const seller = this.ProductForm.get( 'seller',)!.value;
+      const photo = this.ProductForm.get( 'photo',)!.value;
       console.log('product:', name);
 
       // Send HTTP POST request to Django backend
@@ -99,7 +100,7 @@ export class SellItemsComponent implements OnInit {
       price:price,
       category:category,
       description:description,
-      // photo: photo,
+      photo: this.urls,
       location : location,
       // quantity: "quantity",
       // fixed_price: "fixed_price",
@@ -119,6 +120,38 @@ export class SellItemsComponent implements OnInit {
         });
     }
     // this.router.navigate(['/', 'otp']);
+  }
+
+  urls = new Array<string>();
+
+   @ViewChild('fileInput') fileInput!: ElementRef;
+  fileAttr = 'Choose Images';
+  uploadFileEvt(imgFile: any) {
+    debugger
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      this.fileAttr = '';
+      Array.from(imgFile.target.files).forEach((file: any) => {
+        this.fileAttr += file.name + ' , ';
+      });
+      // HTML5 FileReader API
+      this.urls = [];
+      let files = imgFile.target.files;
+      let reader = new FileReader();
+      if (files) {
+        for (let file of files) {
+          let reader = new FileReader();
+          reader.onload = (e: any) => {
+            this.urls.push(e.target.result);
+          }
+          reader.readAsDataURL(file);
+        }
+      }
+      reader.readAsDataURL(imgFile.target.files[0]);
+      // Reset if duplicate image uploaded again
+      this.fileInput.nativeElement.value = '';
+    } else {
+      this.fileAttr = 'Choose Images';
+    }
   }
 }
 
