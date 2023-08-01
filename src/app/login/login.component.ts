@@ -4,7 +4,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NONE_TYPE } from '@angular/compiler';
 import { MatStepper } from '@angular/material/stepper';
-
+import { coerceStringArray } from '@angular/cdk/coercion';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,11 +17,17 @@ export class LoginComponent implements OnInit {
   user: any = []; 
   userVar:any;
   isLinear = true;
-  stepper: any;
+  //stepper: any;
   validUser: any;
+  verifiedOTP:any;
   otp!: any;
+  OtpresponseData: any;
+  UserResponseData: any;
   showOtpComponent = true;
   @ViewChild('ngOtpInput', { static: false}) ngOtpInput: any;
+
+  @ViewChild(MatStepper) stepper!: MatStepper;
+
 
   firstFormGroup = this._formBuilder.group({
     mobile: ['', Validators.required],
@@ -36,7 +43,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -84,14 +92,14 @@ export class LoginComponent implements OnInit {
     }, 0);
   }
 
-goBack(stepper: MatStepper){
-    stepper.previous();
+goBack(){
+    this.stepper.previous();
 }
 
-goForward(stepper: MatStepper){
-    stepper.next();
+goForward(){
+    this.stepper.next();
 }
-  GoOtp(stepper: MatStepper) {
+  GoOtp() {
     debugger;
     if (this.firstFormGroup.valid) {
       const mobile = this.firstFormGroup.get( 'mobile')!.value;
@@ -99,42 +107,47 @@ goForward(stepper: MatStepper){
       this.http.post('http://127.0.0.1:8000/api/userdata/', { mobile: mobile })
         .subscribe((response: any) => {          
           this.userVar=response.user;
+          this.UserResponseData = response;
           console.log('Response from server:', response);    
-          localStorage.setItem('IsValidUser', response.success); 
           
         }, (error: any) => {
           console.error('Error sending data to server:', error);
         });
     }
-    stepper.next();
+    this.stepper.next();
   }
 
-  GoUserCheck(stepper: MatStepper){
-    this.validUser = localStorage.getItem('IsValidUser');
+
+
+  GoUserCheck(){ 
+    
     if (this.secondFormGroup.valid) {
-    const url = 'http://127.0.0.1:8000/api/verifyotp/';
-    const body = { entered_otp: this.otp };
-
-    this.http.post(url, body,{ withCredentials: true }).subscribe(
-      (response) => {
-        // Handle successful response
-        console.log(response);
-      },
-      (error) => {
-        // Handle error response
-        console.error(error);
-      }
-    );
-    }
-    if(this.validUser == "true") {
-      this.router.navigate(['/', 'home']);
-    }
-    else{
-      stepper.next();
-    }
+      const url = 'http://127.0.0.1:8000/api/verifyotp/';
+      const body = { entered_otp: this.otp };  
+      this.http.post(url, body,{ withCredentials: true }).subscribe(
+        (response:any) => {
+          console.log(response);
+          this.OtpresponseData = response;  
+          this.OtpValidUser();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+      }  
   }
 
-  goToHome(stepper: MatStepper){
+OtpValidUser(){
+  if (this.OtpresponseData.success === false ) {
+     this.toastr.error('Please Enter Valid OTP');
+  } else if (this.OtpresponseData.success === true && this.UserResponseData.success === false) {   
+    this.stepper.next();
+    this.toastr.success('Otp Validated Successfully');
+  } else {     
+    this.router.navigate(['/', 'home']);
+  }
+}
+  goToHome(){
     this.router.navigate(['/', 'home']);
   }
 

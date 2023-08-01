@@ -11,6 +11,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
 import { LocationComponent } from './location/location.component';
 import { SellItemsComponent } from './sell-items/sell-items.component';
 import { HomeComponent } from './home/home.component';
+import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { HomeComponent } from './home/home.component';
 
@@ -19,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     LoginComponent,
     LocationComponent,
-    SellItemsComponent,
+    SellItemsComponent
    // HomeComponent
   ],
   imports: [
@@ -30,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgOtpInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     FormsModule // <============ Don't forget to call 'forRoot()'!
   ],
   providers: [],
