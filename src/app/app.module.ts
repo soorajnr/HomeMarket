@@ -12,6 +12,7 @@ import { LocationComponent } from './location/location.component';
 import { SellItemsComponent } from './sell-items/sell-items.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CameraModule } from './sell-items/camera/camera.module';
 //import { HomeComponent } from './home/home.component';
 
 @NgModule({
@@ -30,7 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NgOtpInputModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule // <============ Don't forget to call 'forRoot()'!
+    FormsModule ,
+    CameraModule// <============ Don't forget to call 'forRoot()'!
   ],
   providers: [],
   bootstrap: [AppComponent]

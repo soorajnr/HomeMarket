@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CameraService } from './camera/camera.service';
 
 interface User {
   id:number;
@@ -26,12 +27,54 @@ export class SellItemsComponent implements OnInit {
   ProductForm: FormGroup = new FormGroup({});
   
   // user: any = []; 
+  
+  test!: string[];
+
+  devices!: any[];
+  newPic:any;
+  orientation: any;
+
+  pics: string[] = [];
+
  
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cameraService: CameraService
   ) {}
+
+ async OnloadCam() {
+
+    this.test = [];
+    this.test.push('navigator: ' + (typeof navigator != 'undefined' ? 'suppported' : 'not supported'));
+    this.test.push('navigator.getUserMedia: ' + (typeof navigator.mediaDevices.getUserMedia != 'undefined' ? 'suppported' : 'not supported'));
+    this.test.push('navigator.mediaDevices: ' + (typeof navigator.mediaDevices != 'undefined' ? 'suppported' : 'not supported'));
+    this.test.push('navigator.mediaDevices.getUserMedia: ' + (typeof navigator.mediaDevices.getUserMedia != 'undefined' ? 'suppported' : 'not supported'));
+    this.test.push('navigator.mediaDevices.enumerateDevices: ' + (typeof navigator.mediaDevices.enumerateDevices != 'undefined' ? 'suppported' : 'not supported'));
+
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    this.devices = devices.filter(device => device.kind == 'videoinput');
+  }
+
+  @HostListener('window:deviceorientation', ['$event'])
+  public onDeviceOrientation({ alpha, gamma, beta, absolute }: DeviceOrientationEvent) {
+    this.orientation = { alpha, gamma, beta, absolute };
+  }
+
+  public async openCamera() {
+    
+    try {
+      this.newPic = await this.cameraService.open();
+    } catch (error) {
+      console.dir(error);
+    }
+    if (this.newPic) {
+      this.pics.push(this.newPic);
+    }
+  }
+
+
 
   ngOnInit() {
     this.getCategory();
@@ -50,6 +93,7 @@ export class SellItemsComponent implements OnInit {
     // negotiable_price: ['']
 
     });
+    this.OnloadCam();
   }
 
 

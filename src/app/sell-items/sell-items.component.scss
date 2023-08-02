@@ -13,7 +13,8 @@
     top: 10px;
   }
   .upload-img{
-    height: 100px;
+    max-height: 200px;
+    min-height: 200px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -17,7 +17,9 @@
             <div class="row mt-5">
                 <h2>Product Details</h2>
                 <div class="col-sm-6 mb-3">
+              
                     <div class="row">
+                        
                         <div class=" col-sm-6">
                             <mat-form-field appearance="outline" class="col-12">
                                 <mat-label>Item Name</mat-label>
@@ -74,16 +76,13 @@
                     </mat-form-field>
                   </div>
                  
-                  <div>
+                  <!-- <div>
                     <mat-form-field  appearance="outline" class="col-12">
                         <div>
                           <mat-toolbar>
-                            <!-- Display files names -->
                             <input matInput [value]="fileAttr" readonly name="name" />
-                            <!-- Browse Button -->
                             <button mat-flat-button color="primary">Browse File</button>
                           </mat-toolbar>
-                          <!-- Fetch selected filed on change -->
                           <input
                             type="file"
                             #fileInput
@@ -96,14 +95,23 @@
                           />
                         </div>
                       </mat-form-field>
-                  </div>
-                  <div>
-                    <button mat-raised-button color="primary" (click)="saveProduct()"><mat-icon>save</mat-icon> Save</button>
-                  </div>
+                  </div> -->
+              
+                  <button mat-raised-button color="primary" (click)="saveProduct()" class="mt-2"><mat-icon>save</mat-icon> Save</button>
                 </div>
                 
                 <div class="col-sm-6 col-12 mb-3">
+<!-- <pre><code>{{ devices | json }}</code></pre> -->
+
                     <div class="row row-cols-3">
+                        <div class="upload-img col col-sm mb-2" *ngFor="let picURL of pics">                        
+                            <div class="upload-img" [ngStyle]="{'background': 'url(' + picURL + ') no-repeat 0 0 / cover'}">
+                                <div class="overlay-upload">
+                                    <mat-icon>photo_camera</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="upload-img col col-sm mb-2" *ngFor="let url of urls">                        
                             <div class="upload-img" [ngStyle]="{'background': 'url(' + url + ') no-repeat 0 0 / cover'}">
                                 <div class="overlay-upload">
@@ -112,12 +120,32 @@
                             </div>
                         </div>
                         <div class="upload-img col-12 col-sm-12 mb-2" *ngIf="fileAttr == 'Choose Images'">                        
-                            <div class="upload-img" style="background: url(https://dummyimage.com/ccc/999); height: 250px;">
+                            <div class="upload-img" style="background: url(https://dummyimage.com/ccc/999);  max-height: 200px;">
                                 <div class="overlay-upload">
                                     <mat-icon>photo_camera</mat-icon>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row mb-3">
+                        
+                        <div class=" col-sm-6">
+                        <button mat-raised-button color="accent" class="w-100" >
+                            <mat-icon>photo</mat-icon>
+                            <input
+                            type="file"
+                            #fileInput
+                            id="uploadFile"
+                            formControlName="photo"
+                            (change)="uploadFileEvt($event)"
+                            name="uploadFile"
+                            multiple="multiple"
+                            accept="image/*"
+                          /> Choose from Gallery</button>
+                      </div>
+                      <div class=" col-sm-6">
+                        <button mat-raised-button color="warn" (click)="openCamera()" class="w-100"><mat-icon>camera</mat-icon> Open Camera</button>
+                      </div>
                     </div>
                 </div>
             </div>

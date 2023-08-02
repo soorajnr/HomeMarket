@@ -12,6 +12,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [],
@@ -27,7 +28,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatStepperModule,
     MatProgressBarModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule,
+    
     
   ],
 
@@ -43,7 +46,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatStepperModule,
     MatProgressBarModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSliderModule
   ],
 })
 export class MaterialModule { }
